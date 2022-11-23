@@ -13,10 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// ■Laravel8以降のコントローラーのルート情報記述についてLaravel8以降では、web.phpなどにコントローラーのルート情報を記述する際、クラス名だけでは検索されなくなりました。例えば、P.42のリスト2-8でHelloControllerのルート情報をweb.phpに記述する際は、以下のようにuse文を用意する必要があります。
+
+use App\Http\Controllers\HelloController;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello', function() {
-    return '<html><body><h1>Hello</h1><p>This is sample page.</p></body></html>';
-});
+Route::get('/hello', [HelloController::class, 'index'] );
+
