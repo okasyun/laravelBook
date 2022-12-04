@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+use App\Http\Requests\HelloRequest;
+
 // DBクラスを使用
 use Illuminate\Support\Facades\DB;
 
@@ -34,10 +36,9 @@ class HelloController extends Controller {
         return view('hello.index', ['items'=>$items]);
     }
 
-    public function post(Request $request)
+    public function post(HelloRequest $request)
     {
-        $items = DB::select('select * from people');
-        return view('hello.index', ['items'=> $items]);
+        return view('hello.index', ['msg'=>'正しく入力されました！']);
     }
 
     public function add(Request $request)
