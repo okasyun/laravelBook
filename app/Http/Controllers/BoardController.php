@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-// Boardモデルを利用
+// Boardモデルを利用;
 use App\Models\Board;
 
 use Illuminate\Http\Request;
@@ -12,7 +12,8 @@ class BoardController extends Controller
     public function index(Request $request)
     {
         // 全レコードを返す
-        $items = Board::all();
+        // $items = Board::all();
+        $items = Board::with('person')->get();
         return view('board.index', ['items' => $items]);
     }
 

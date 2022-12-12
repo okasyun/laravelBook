@@ -23,6 +23,11 @@ class Board extends Model
     // Boardクラスがidとタイトルを取得
     public function getData()
     {
-        return $this->id . ':' . $this->title;
+        return $this->id . ': ' . $this->title . ' (' . $this->person->name . ')';;
+    }
+
+    public function Person()
+    {
+        return $this->belongsTo('App\Models\Person');
     }
 }

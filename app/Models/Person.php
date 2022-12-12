@@ -25,4 +25,13 @@ class Person extends Model
         // $thisはインスタンス自体
         return $this->id . ':' . $this->name . '(' . $this->age .')';
     }
+
+    public function board() 
+    {
+        return $this->hasOne('App\Models\Board');
+    }
+
+    public function boards() {
+        return $this->hasMany('App\Models\Board');
+    }
 }
